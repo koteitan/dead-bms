@@ -10,3 +10,4 @@ import DeadBms
 #print axioms DeadBms.rTSS.Ex.main
 #print axioms DeadBms.BM2_1.Ex.main
 #print axioms DeadBms.Bubby3fix.Ex.main
+#print axioms Bismuth.main_theorem

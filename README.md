@@ -28,6 +28,15 @@
 
 分類ページで「壊れている」「停止しないと予想」とだけ書かれているもの（BM3.1、BM3.2、BM3.1.1）と、停止しないとの記述がないもの（BM4、BM2.3、BM2.2）は扱っていません。
 
+## Y 数列の亜種: Bismuth
+
+[Bismuth](https://googology.fandom.com/wiki/User_blog:Syst3ms/Bismuth_:_not_Y_sequence,_but_close)（Syst3ms による Y 数列に似た表記、2019/9/29 版）について、次を証明しました。解説は [doc/1y-bismuth](doc/1y-bismuth/README.md) にあります。
+
+- `(1,2,4,7,5,4,5,10)` は $`(1,3)`$ から展開で到達できる標準形の数列である。
+- その展開 $`[n]`$ は、$`1 \le n \le 20`$ のどの $`n`$ でも計算が終わらない。
+
+Bismuth の定義はプログラムそのものなので、プログラムを Lean に書き直して示しています。展開の計算の途中で、表の先頭の行の最後の項が 0 でなくなるまで列を右へ写し続ける手順が呼ばれます。このとき写す列が 1 つもないので、表は変わらず、繰り返しが終わりません。BMS の例のような展開の無限下降列ではなく、1 回の展開の計算そのものが終わらない、という種類の非停止です。
+
 ## 証明の方針
 
 各例について、$`M`$ を含む行列の族 $`S`$ を作り、次を示します。
@@ -77,8 +86,13 @@ lean/
     Main.lean          主定理
   rTSS/ BM2.1/ Bubby3fix/
     Main.lean          系
+  1y-bismuth/        Bismuth (2019/9/29 版)
+    Model.lean         プログラムの Lean への書き直し
+    Decide.lean        上限なしで計算して無限ループを見つける関数と、その正しさ
+    Standard.lean      標準形であることの確認
+    Main.lean          主定理
   Test/              yaBMS との照合, 公理の確認
   Explore/           探索用の #eval (ビルド対象外)
 doc/                 証明の解説 (日本語 README.md, 英語 README-en.md)
-tools/               yaBMS との照合テストの生成
+tools/               yaBMS との照合テストの生成, Bismuth の差分テスト
 ```

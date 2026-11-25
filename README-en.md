@@ -31,6 +31,15 @@ The following rule sets are not covered.
 - The page only says "considered broken" or "expected not to terminate": BM3.1, BM3.2, BM3.1.1.
 - The page does not say they do not terminate: BM4, BM2.3, BM2.2.
 
+## A variant of the Y sequence: Bismuth
+
+For [Bismuth](https://googology.fandom.com/wiki/User_blog:Syst3ms/Bismuth_:_not_Y_sequence,_but_close) (a Y-sequence-like notation by Syst3ms, version of 2019-09-29) the following is proved. The explanation is in [doc/1y-bismuth](doc/1y-bismuth/README-en.md).
+
+- `(1,2,4,7,5,4,5,10)` is a standard sequence reached from $`(1,3)`$ by expansions.
+- The computation of its expansion $`[n]`$ does not end for any $`n`$ with $`1 \le n \le 20`$.
+
+Bismuth is defined by a program, so the program is rewritten in Lean. During the computation of the expansion, a procedure is called that keeps copying columns to the right until the last entry of the first row of a table becomes nonzero. Here there are no columns to copy, so the table does not change and the repetition never ends. This is non-termination of the computation of a single expansion, not an infinite descending sequence of expansions as in the BMS examples.
+
 ## Approach
 
 For each example, a family $`S`$ of matrices containing $`M`$ is constructed, and the following is shown.
@@ -80,8 +89,13 @@ lean/
     Main.lean          the main theorem
   rTSS/ BM2.1/ Bubby3fix/
     Main.lean          corollaries
+  1y-bismuth/        Bismuth (version of 2019-09-29)
+    Model.lean         the program rewritten in Lean
+    Decide.lean        a function that computes without a bound and finds the infinite loop, and its correctness
+    Standard.lean      the check of standardness
+    Main.lean          the main theorem
   Test/              comparison with yaBMS, check of axioms
   Explore/           #eval scripts for exploration (not built)
 doc/                 explanations of the proofs (Japanese README.md, English README-en.md)
-tools/               generator of the yaBMS comparison test
+tools/               generator of the yaBMS comparison test, differential test of Bismuth
 ```
