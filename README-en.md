@@ -33,12 +33,14 @@ The following rule sets are not covered.
 
 ## A variant of the Y sequence: Bismuth
 
-For [Bismuth](https://googology.fandom.com/wiki/User_blog:Syst3ms/Bismuth_:_not_Y_sequence,_but_close) (a Y-sequence-like notation by Syst3ms, version of 2019-09-29) the following is proved. The explanation is in [doc/1y-bismuth](doc/1y-bismuth/README-en.md).
+For two versions of [Bismuth](https://googology.fandom.com/wiki/User_blog:Syst3ms/Bismuth_:_not_Y_sequence,_but_close) (a Y-sequence-like notation by Syst3ms) the following is proved.
 
-- `(1,2,4,7,5,4,5,10)` is a standard sequence reached from $`(1,3)`$ by expansions.
-- The computation of its expansion $`[n]`$ does not end for any $`n`$ with $`1 \le n \le 20`$.
+| version | sequence | standard | brackets whose computation does not end | explanation |
+|---|---|---|---|---|
+| 2019-09-29 | `(1,2,4,7,5,4,5,10)` | 19 expansions from $`(1,3)`$ | $`1 \le n \le 20`$ | [doc/1y-bismuth](doc/1y-bismuth/README-en.md) |
+| 2020-07-15 | `(1,4,12,9,12,20)` | 58 expansions from $`(1,5)`$ (brackets 0 and 1) | $`0 \le n \le 20`$ | [doc/1y-bismuth-2020-07-15](doc/1y-bismuth-2020-07-15/README-en.md) |
 
-Bismuth is defined by a program, so the program is rewritten in Lean. During the computation of the expansion, a procedure is called that keeps copying columns to the right until the last entry of the first row of a table becomes nonzero. Here there are no columns to copy, so the table does not change and the repetition never ends. This is non-termination of the computation of a single expansion, not an infinite descending sequence of expansions as in the BMS examples.
+Bismuth is defined by a program, so the program is rewritten in Lean. During the computation of the expansion, a procedure is called that keeps copying columns to the right until the last entry of the first row of a table becomes nonzero. In the version of 2019-09-29 there are no columns to copy, and in the version of 2020-07-15 all the copied values are 0, so the table does not change and the repetition never ends. This is non-termination of the computation of a single expansion, not an infinite descending sequence of expansions as in the BMS examples.
 
 ## Approach
 
@@ -94,8 +96,9 @@ lean/
     Decide.lean        a function that computes without a bound and finds the infinite loop, and its correctness
     Standard.lean      the check of standardness
     Main.lean          the main theorem
+  1y-bismuth-2020-07-15/  Bismuth (version of 2020-07-15), with the same files as 1y-bismuth/
   Test/              comparison with yaBMS, check of axioms
   Explore/           #eval scripts for exploration (not built)
 doc/                 explanations of the proofs (Japanese README.md, English README-en.md)
-tools/               generator of the yaBMS comparison test, differential test of Bismuth
+tools/               generator of the yaBMS comparison test, differential tests of Bismuth (per version)
 ```

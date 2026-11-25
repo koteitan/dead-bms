@@ -11,3 +11,4 @@ import DeadBms
 #print axioms DeadBms.BM2_1.Ex.main
 #print axioms DeadBms.Bubby3fix.Ex.main
 #print axioms Bismuth.main_theorem
+#print axioms Bismuth2020.main_theorem

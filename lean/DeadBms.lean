@@ -21,3 +21,4 @@ import rTSS.Main
 import «BM2.1».Main
 import Bubby3fix.Main
 import «1y-bismuth».Main
+import «1y-bismuth-2020-07-15».Main

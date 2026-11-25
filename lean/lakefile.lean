@@ -15,7 +15,8 @@ lean_lib DeadBms where
   globs := #[.one `DeadBms, .submodules `Common, .submodules `Test,
     .submodules `BM1, .submodules `«BM1.1», .submodules `BM2, .submodules `BM3,
     .submodules `rTSS, .submodules `«BM2.1», .submodules `Bubby3fix,
-    .submodules `«1y-bismuth»]
+    .submodules `«1y-bismuth»,
+    .submodules `«1y-bismuth-2020-07-15»]
 
 /-- exploration scripts (`#eval`), not part of the proof -/
 lean_lib Explore where
